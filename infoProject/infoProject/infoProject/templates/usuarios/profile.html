@@ -1,0 +1,66 @@
+{% extends 'usuarios/perfilContenedor.html'%}
+{% load crispy_forms_tags %}
+{% block perfil %}
+    <h2 class="text-center mt-4">Editar Perfil</h2>
+    <div class="section mt-5">
+      <div class="row">
+        
+        <div class="col-lg-1"></div>
+          <div class="col-lg-3">
+            <img class="account-img foto-perfil" src="{{user.profile.image.url }}">
+          </div>
+        <div class="col-lg-1"></div>
+        
+          <div class="col-lg-7 my-auto">
+            
+              <div class="text-center ">
+                <h2 class="account-heading">{{user.username}}</h2>
+                <p class="text-secondary">{{user.email}}</p>
+              </div>
+
+          </div>
+ 
+      </div>
+      
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+           
+                         
+              <div class="row">
+                <div class="col-lg-6 mt-3 ">
+                  <label for="">Foto de Perfil</label>{{p_form.image|as_crispy_field}}
+                </div><div class="col-lg-6 mt-3">
+                  <label for="">Redes Sociales</label>{{p_form.instagram|as_crispy_field}}
+                </div>
+              </div>
+              <div class="row">
+                 <div class="col-lg-6 mt-3 ">
+                  <label >Descripcion</label>{{p_form.aboutus|as_crispy_field}}
+                </div><div class="col-lg-6 mt-3 ">
+                  <label >Twitter</label>{{p_form.twitter|as_crispy_field}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 mt-3">
+                 <label for="">Telefono</label>{{p_form.telefono|as_crispy_field}}
+                </div>
+                <div class="col-lg-6 mt-3">
+                  <label for="">Rubro</label>{{p_form.rubro|as_crispy_field}}
+                 </div>
+              
+              </div>
+            <div class="row">
+              <div class="col-lg-12 mt-4">
+                <br><button id="botonGuardar" class="btn btn-block btn-success" type="submit">Guardar</button>    
+              </div>  
+            </div>
+        
+         
+                
+        </form>
+       
+  </div>
+
+
+
+{% endblock %}

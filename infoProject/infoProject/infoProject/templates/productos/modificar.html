@@ -1,0 +1,28 @@
+{% extends 'productos/editarproductocontenedor.html'%}
+{% load crispy_forms_tags %}
+{%block editarproducto%}
+  <div> </div><br>
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+  <h5>Edita tu producto!</h5> <br><br>
+  {{form.errors}}
+
+    <div class="row"> 
+            <div class="col-lg-6 mt-3">
+              {{form.nombre|as_crispy_field}}
+              <br>
+              <br>
+              <br>
+              {{form.imagen|as_crispy_field}}
+            </div>
+            <div class="col-lg-6 mt-3 " > 
+              {{form.descripcion|as_crispy_field}}
+            </div>
+
+        </div>
+    <div class="row"> 
+            <div class="col-lg-6 mt-3 ">
+              <button id="botonGuardar" class="btn btn-block btn-success" type="submit">Guardar</button>
+            </div>
+    </div>
+
+  {% endblock %}
